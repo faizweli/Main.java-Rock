@@ -20,11 +20,10 @@ public class Main
  
     public static String getPlayerMove()
     {
-        String playerChoice;
-        try (Scanner scan = new Scanner(System.in)) {
-            String choice = scan.next();
-            playerChoice = choice.toUpperCase();
-        }
+        Scanner scan = new Scanner(System.in);
+        String choice = scan.next();
+        String playerChoice = choice.toUpperCase();
+        scan.close();
         if(playerChoice.equals("ROCK") || playerChoice.equals("PAPER") || playerChoice.equals("SCISSORS")){
             return playerChoice;
         }else{
@@ -39,11 +38,15 @@ public class Main
         String computerChoice;
         Random random = new Random();
         int input = random.nextInt(3)+1;
-        computerChoice = switch (input) {
-            case 1 -> Move.ROCK.name();
-            case 2 -> Move.PAPER.name();
-            default -> Move.SCISSORS.name();
-        };
+        if (input == 1) {
+            computerChoice = Move.ROCK.name();
+        }
+        else if(input == 2) {
+            computerChoice = Move.PAPER.name();
+        }
+        else {
+            computerChoice = Move.SCISSORS.name();
+        }
         return computerChoice;    
     }
  
