@@ -39,14 +39,16 @@ public class Main
         String computerChoice;
         Random random = new Random();
         int input = random.nextInt(3)+1;
-        if (input == 1) {
-            computerChoice = Move.ROCK.name();
-        }
-        else if(input == 2) {
-            computerChoice = Move.PAPER.name();
-        }
-        else {
-            computerChoice = Move.SCISSORS.name();
+        switch (input) {
+            case 1:
+                computerChoice = Move.ROCK.name();
+                break;
+            case 2:
+                computerChoice = Move.PAPER.name();
+                break;
+            default:
+                computerChoice = Move.SCISSORS.name();
+                break;
         }
         return computerChoice;    
     }
